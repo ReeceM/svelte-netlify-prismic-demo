@@ -7,7 +7,10 @@
 
 	<Counter />
 
-	<p>Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte apps.</p>
+
+	Visit the Page <a href="/page" sveltekit:prefetch>Page</a>
+	<br>
+	<!-- Visit the Blog <a href="/blog/hello-world" sveltekit:prefetch>Blog</a> -->
 </main>
 
 <style>
