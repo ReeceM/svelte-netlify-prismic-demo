@@ -5,6 +5,8 @@ module.exports = function ({ dest = 'build', prefetch = null } = {}) {
 
     async adapt(builder, config) {
 
+      console.info(config.kit.prerender);
+
       if (!prefetch) {
         await builder.prerender({
           force: true,

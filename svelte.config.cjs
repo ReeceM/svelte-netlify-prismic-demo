@@ -6,11 +6,11 @@ const apiEndpoint = "https://chexblog.cdn.prismic.io/api/v2";
 const Client = Prismic.client(apiEndpoint);
 
 const linkResolver = (doc) => {
-  if (doc.type === 'blog_post') {
-    return `/blog/${doc.uid}`
-  }
+	if (doc.type === 'blog_post') {
+		return `/blog/${doc.uid}`
+	}
 
-  return `/${uid}`;
+	return `/${uid}`;
 }
 
 
@@ -39,7 +39,16 @@ module.exports = {
 			crawl: true,
 			enabled: true,
 			force: true,
-			pages: ['*'],
+			pages: [...(function () {
+				handle_promise(promise, info)
+				let query = await Client.query(Prismic.Predicates.at('document.type', 'blog_post'));
+				let pages = ['*']
+				let result = query.results.map(linkResolver);
+
+				pages.push(...result)
+
+				return pages;
+			})()],
 		},
 
 		vite: {
