@@ -3,7 +3,8 @@
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "svelte-kit dev",
-		"build": "svelte-kit build",
+		"build": "npm run routes && svelte-kit build",
+		"routes": "node ./utils/routelist",
 		"start": "svelte-kit start"
 	},
 	"devDependencies": {
